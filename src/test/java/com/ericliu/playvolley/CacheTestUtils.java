@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ericliu.utils;
+package com.ericliu.playvolley.utils;
 
 import com.android.volley.Cache;
 

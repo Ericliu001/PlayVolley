@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2015 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,24 +14,14 @@
  * limitations under the License.
  */
 
-package com.ericliu.utils;
+package com.ericliu.playvolley.mock;
 
-import com.android.volley.ExecutorDelivery;
+import android.os.SystemClock;
+import org.robolectric.annotation.Implements;
 
-import java.util.concurrent.Executor;
-
-/**
- * A ResponseDelivery for testing that immediately delivers responses
- * instead of posting back to the main thread.
- */
-public class ImmediateResponseDelivery extends ExecutorDelivery {
-
-    public ImmediateResponseDelivery() {
-        super(new Executor() {
-            @Override
-            public void execute(Runnable command) {
-                command.run();
-            }
-        });
+@Implements(value = SystemClock.class, callThroughByDefault = true)
+public class ShadowSystemClock {
+    public static long elapsedRealtime() {
+        return 0;
     }
 }

@@ -1,4 +1,4 @@
-package com.ericliu;
+package com.ericliu.playvolley;
 
 import com.android.volley.Cache;
 import com.android.volley.Network;
@@ -6,7 +6,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue.RequestFilter;
 import com.android.volley.ResponseDelivery;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.PriorityBlockingQueue;
 
@@ -16,6 +18,20 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 public class RequestQueue {
 
+    /**
+     * Call back interface for completed requests.
+     *
+     * @param <T>
+     */
+    public interface RequestFinishedListener<T> {
+
+        /**
+         * Called when a request finished processing.
+         *
+         * @param request
+         */
+        void onRequestFinished(Request<T> request);
+    }
     /**
      * The set of all requests currently being processed by this RequestQueue.
      * A Request will be in this set if it is waiting in any queue or currently being processed
@@ -27,6 +43,8 @@ public class RequestQueue {
      * The cache triage queue.
      */
     private final PriorityBlockingQueue<Request<?>> mCacheQueue = new PriorityBlockingQueue<>();
+
+    private final List<RequestFinishedListener<?>> mFinishedListeners = new ArrayList<>();
 
     public RequestQueue(final Cache cache,
                         final Network network,
@@ -62,5 +80,9 @@ public class RequestQueue {
 
     public <T> void add(final Request<T> request) {
         mCurrentRequests.add(request);
+    }
+
+    public <T> void addRequestFinishedListener(final RequestFinishedListener<T> mMockListener) {
+
     }
 }
