@@ -35,9 +35,9 @@ public class RequestQueueIntegrationTest {
     private Network mMockNetwork;
 
     @Mock
-    private RequestFinishedListener<byte[]> mMockListener;
+    private RequestFinishedListener mMockListener;
     @Mock
-    private RequestFinishedListener<byte[]> mMockListener2;
+    private RequestFinishedListener mMockListener2;
 
     @Before
     public void setUp() throws Exception {
