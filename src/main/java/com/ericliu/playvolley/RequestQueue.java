@@ -1,7 +1,5 @@
 package com.ericliu.playvolley;
 
-import com.android.volley.*;
-import com.android.volley.RequestQueue.RequestFilter;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -110,6 +108,8 @@ public class RequestQueue {
 
     public void add(final Request<?> request) {
         // Tag the request as belonging to this queue and add it to the set of current requests.
+        request.setRequestQueue(this);
+
         mCurrentRequests.add(request);
 
         request.setSequence(getSequenceNumber());
@@ -128,5 +128,9 @@ public class RequestQueue {
 
     private Cache getCache() {
         return mCache;
+    }
+
+    public interface RequestFilter {
+        boolean apply(Request<?> request);
     }
 }

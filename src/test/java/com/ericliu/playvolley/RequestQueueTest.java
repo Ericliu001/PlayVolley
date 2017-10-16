@@ -1,9 +1,6 @@
 package com.ericliu.playvolley;
 
-import com.android.volley.Network;
-import com.android.volley.Request;
-import com.android.volley.ResponseDelivery;
-import com.android.volley.toolbox.NoCache;
+import com.ericliu.playvolley.toolbox.NoCache;
 import com.ericliu.playvolley.utils.ImmediateResponseDelivery;
 import org.junit.Before;
 import org.junit.Test;

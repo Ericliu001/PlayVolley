@@ -14,8 +14,6 @@ android {
 // Check if the android plugin version supports unit testing.
 if (configurations.findByName("testCompile")) {
   dependencies {
-    // Network libraries
-    compile "com.android.volley:volley:1.0.0"
 
     testCompile "junit:junit:4.12"
     testCompile "org.hamcrest:hamcrest-library:1.3"
