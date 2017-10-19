@@ -5,4 +5,6 @@ package com.ericliu.playvolley;
  */
 
 public class Response<T> {
+    public class ErrorListener {
+    }
 }
