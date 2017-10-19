@@ -1,12 +1,12 @@
-package com.ericliu.playvolley.toolbox;
+package com.ericliu.playvolley.mock;
 
 import com.ericliu.playvolley.Cache;
 
 /**
- * Created by ericliu on 16/10/17.
+ * Created by ericliu on 19/10/17.
  */
 
-public class NoCache implements Cache {
+public class MockCache implements Cache {
     @Override
     public Entry get(final String key) {
         return null;
