@@ -27,7 +27,12 @@ public class DiskBasedCache implements Cache {
     }
 
     static int readInt(final ByteArrayInputStream inputStream) {
-        throw new UnsupportedOperationException();
+        int n = 0x0;
+        n |= ((inputStream.read() & 0xFF) << 0);
+        n |= ((inputStream.read() & 0xFF) << 8);
+        n |= ((inputStream.read() & 0xFF) << 16);
+        n |= ((inputStream.read() & 0xFF) << 24);
+        return n;
     }
 
     @Override
