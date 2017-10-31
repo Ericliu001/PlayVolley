@@ -95,4 +95,26 @@ public class DiskBasedCacheTest {
         assertEquals(DiskBasedCache.readInt(bais), Integer.MIN_VALUE);
         assertEquals(DiskBasedCache.readInt(bais), Integer.MAX_VALUE);
     }
+
+    @Test
+    public void serializeLong() throws Exception {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        DiskBasedCache.writeLong(baos, 0L);
+        DiskBasedCache.writeLong(baos, 31337);
+        DiskBasedCache.writeLong(baos, -4160);
+        DiskBasedCache.writeLong(baos, 4295032832L);
+        DiskBasedCache.writeLong(baos, -4314824046L);
+        DiskBasedCache.writeLong(baos, Long.MIN_VALUE);
+        DiskBasedCache.writeLong(baos, Long.MAX_VALUE);
+
+        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+
+        assertEquals(DiskBasedCache.readLong(bais), 0L);
+        assertEquals(DiskBasedCache.readLong(bais), 31337);
+        assertEquals(DiskBasedCache.readLong(bais), -4160);
+        assertEquals(DiskBasedCache.readLong(bais), 4295032832L);
+        assertEquals(DiskBasedCache.readLong(bais), -4314824046L);
+        assertEquals(DiskBasedCache.readLong(bais), Long.MIN_VALUE);
+        assertEquals(DiskBasedCache.readLong(bais), Long.MAX_VALUE);
+    }
 }

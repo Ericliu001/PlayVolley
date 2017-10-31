@@ -35,6 +35,30 @@ public class DiskBasedCache implements Cache {
         return n;
     }
 
+    public static void writeLong(final ByteArrayOutputStream outputStream, final long n) {
+        outputStream.write((byte) (n >>> 0));
+        outputStream.write((byte) (n >>> 8));
+        outputStream.write((byte) (n >>> 16));
+        outputStream.write((byte) (n >>> 24));
+        outputStream.write((byte) (n >>> 32));
+        outputStream.write((byte) (n >>> 40));
+        outputStream.write((byte) (n >>> 48));
+        outputStream.write((byte) (n >>> 56));
+    }
+
+    public static long readLong(final ByteArrayInputStream inputStream) {
+        long n = 0L;
+        n |= ((inputStream.read() & 0xFFL) << 0);
+        n |= ((inputStream.read() & 0xFFL) << 8);
+        n |= ((inputStream.read() & 0xFFL) << 16);
+        n |= ((inputStream.read() & 0xFFL) << 24);
+        n |= ((inputStream.read() & 0xFFL) << 32);
+        n |= ((inputStream.read() & 0xFFL) << 40);
+        n |= ((inputStream.read() & 0xFFL) << 48);
+        n |= ((inputStream.read() & 0xFFL) << 56);
+        return n;
+    }
+
     @Override
     public Entry get(final String key) {
         return null;
